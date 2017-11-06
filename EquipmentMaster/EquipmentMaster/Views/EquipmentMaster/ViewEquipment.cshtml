@@ -1,0 +1,44 @@
+﻿@model EquipmentMaster.Models.AllEquipmentViewModel
+@{
+    ViewBag.Title = "View Equipment";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@*@Html.AntiForgeryToken()*@
+<h4>View All the Equipments.</h4>
+<hr />
+@*@Html.ActionLink("<span class='glyphicon glyphicon-envelope'> Add Equipment", "Add", "EquipmentMaster")*@
+<a href="@Url.Action("Add")">
+    <i class="glyphicon glyphicon-plus"></i>
+    <span>Add Equipment</span>
+</a>
+<br></br>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Equipments)
+        {
+            <tr>
+                <td>@item.NAME</td>
+                <td>@item.Description</td>
+                <td>
+                    @Html.ActionLink("View", "View", "EquipmentMaster", new { id = @item.ID }, null)
+                    @Html.ActionLink("Edit", "Edit", "EquipmentMaster", new { id = @item.ID }, null)
+                    @Html.ActionLink("Delete", "Remove", "EquipmentMaster", new { id = @item.ID }, null)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

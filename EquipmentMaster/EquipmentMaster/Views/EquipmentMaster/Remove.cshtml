@@ -1,0 +1,16 @@
+﻿@model EquipmentMaster.Models.EquipmentViewModel
+
+<h2>@ViewBag.Title </h2>
+
+    @Html.AntiForgeryToken()
+    <h4>Remove selected equipment</h4>
+    <hr />
+    @Html.ValidationSummary()
+    <div class="form-group">
+        @Html.Label("delete","Record has been deleted", new { @class = "form-control", @style="color:red;" })
+        @Html.ActionLink("View All Equipments", "ViewEquipment", "EquipmentMaster")
+    </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
